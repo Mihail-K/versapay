@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Mihail-K']
   spec.email         = ['mihail@platterz.ca']
 
-  spec.summary       = 'Versapay API Wrapper and Mocks'
+  spec.summary       = 'Versapay API Wrapper'
   spec.description   = spec.description
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = 'MIT'
