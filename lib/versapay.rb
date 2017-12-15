@@ -2,6 +2,7 @@
 require 'versapay/client'
 require 'versapay/error'
 require 'versapay/object'
+require 'versapay/agreement'
 require 'versapay/fund_source'
 require 'versapay/transaction'
 require 'versapay/version'

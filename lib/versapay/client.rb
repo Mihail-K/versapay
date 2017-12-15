@@ -17,9 +17,9 @@ class Versapay::Client
       options[:url] = build_url(path)
 
       response = RestClient::Request.execute(options)
-      raise Versapay::Error, response if response.code >= 400
-
       JSON.parse(response.body)
+    rescue RestClient::Exception => error
+      raise Versapay::Error, error.response
     end
 
     def build_url(path)
