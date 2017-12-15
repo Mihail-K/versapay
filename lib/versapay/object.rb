@@ -19,5 +19,9 @@ module Versapay
     def method_missing(field, *)
       attributes.key?(field) ? attributes[field] : super
     end
+
+    def ==(other)
+      other.is_a?(self.class) && attributes == other.attributes
+    end
   end
 end
