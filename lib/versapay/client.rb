@@ -13,8 +13,10 @@ class Versapay::Client
   private
 
     def request(method, path, options)
-      options[:method] = method
-      options[:url] = build_url(path)
+      options[:method]   = method
+      options[:url]      = build_url(path)
+      options[:user]     = username
+      options[:password] = password
 
       response = RestClient::Request.execute(options)
       JSON.parse(response.body)
@@ -23,7 +25,7 @@ class Versapay::Client
     end
 
     def build_url(path)
-      "https://#{username}:#{password}@#{host}/api/#{path}.json"
+      "https://#{host}/api/#{path}.json"
     end
 
     def host
