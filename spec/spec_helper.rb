@@ -4,11 +4,7 @@ require 'dotenv'
 require 'versapay'
 
 Dotenv.load
-
-# Initialize Versapay configuration from environment.
-Versapay.versapay_host       = ENV.fetch('VERSAPAY_HOST')
-Versapay.versapay_access_key = ENV.fetch('VERSAPAY_ACCESS_KEY')
-Versapay.versapay_secret_key = ENV.fetch('VERSAPAY_SECRET_KEY')
+Versapay.load_env
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

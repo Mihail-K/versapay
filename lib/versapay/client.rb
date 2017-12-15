@@ -13,10 +13,10 @@ class Versapay::Client
   private
 
     def request(method, path, options)
-      headers = options[:headers] || {}
-      headers['Content-Type'] = 'application/json'
+      options[:method] = method
+      options[:url] = build_url(path)
 
-      response = RestClient::Request.execute(method: method, url: build_url(path), headers: headers)
+      response = RestClient::Request.execute(options)
       raise Versapay::Error, response if response.code >= 400
 
       JSON.parse(response.body)
