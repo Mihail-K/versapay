@@ -33,11 +33,11 @@ class Versapay::Client
     end
 
     def username
-      Versapay.versapay_access_key
+      Versapay.versapay_token
     end
 
     def password
-      Versapay.versapay_secret_key
+      Versapay.versapay_key
     end
   end
 end

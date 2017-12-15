@@ -8,5 +8,6 @@
 /tmp/
 
 # rspec failure tracking
+.DS_Store
 .env
 .rspec_status

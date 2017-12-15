@@ -1,8 +1,5 @@
 # Versapay
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/versapay`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A Ruby wrapper for the Versapay API.
 
 ## Installation
 
@@ -20,19 +17,43 @@ Or install it yourself as:
 
     $ gem install versapay
 
-## Usage
+### Credentials
+Before the gem can be used, API credentials must be installed.
+```ruby
+# Install Versapay API credentials.
+Versapay.versapay_host  = 'demo.versapay.com'
+Versapay.versapay_token = '[API TOKEN]'
+Versapay.versapay_key   = '[API KEY]'
+```
 
-TODO: Write usage instructions here
+For convenience, `load_env` can be used to install all credentials automatically from the environment.
+```ruby
+# Install credentials from ENV.
+Versapay.load_env
 
-## Development
+# Which is equivalent to:
+Versapay.versapay_host  = ENV.fetch('VERSAPAY_HOST')
+Versapay.versapay_token = ENV.fetch('VERSAPAY_TOKEN')
+Versapay.versapay_key   = ENV.fetch('VERSAPAY_KEY')
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## Example Usage
+The methods exposed by this gem mirror the methods in the [API Documentation](https://developers.versapay.com/#transactions-approve-a-transaction-post).
+```ruby
+# Fetch a Transaction from the VersaPay API.
+transaction = Versapay::Transaction.retrieve('[TOKEN]')
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+# Fetch the VersaPay Balance Fund Source.
+fund_source = Versapay::FundSource.list.detect { |fund_source| fund_source.type == 'balance' }
+
+# Approve the Transaction, settings the Fund Source.
+# NOTE: Can also be called with the respective tokens.
+Versapay::Transaction.approve(transaction, fund_source)
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/versapay.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Mihail-K/versapay.
 
 ## License
 
