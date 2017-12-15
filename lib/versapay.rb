@@ -1,5 +1,8 @@
 # frozen_string_literal: true
+require 'versapay/client'
+require 'versapay/error'
 require 'versapay/object'
+require 'versapay/fund_source'
 require 'versapay/version'
 
 module Versapay

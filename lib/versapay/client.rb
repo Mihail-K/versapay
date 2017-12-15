@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'json'
+require 'rest-client'
 
 class Versapay::Client
   class << self
